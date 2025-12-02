@@ -1,7 +1,7 @@
 use proc_macro::{Delimiter, Group, Literal, Span, TokenTree};
 
 use crate::error::Error;
-use crate::into_tokens::{braced, from_fn, parens, IntoTokens};
+use crate::into_tokens::{IntoTokens, braced, from_fn, parens};
 use crate::token_stream::TokenStream;
 
 const S: [char; 2] = [':', ':'];

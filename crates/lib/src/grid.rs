@@ -170,22 +170,26 @@ impl<G, T> Grid<T> for &G
 where
     G: Grid<T>,
 {
-    type Row<'a> = G::Row<'a>
+    type Row<'a>
+        = G::Row<'a>
     where
         Self: 'a,
         T: 'a;
 
-    type Column<'a> = G::Column<'a>
+    type Column<'a>
+        = G::Column<'a>
     where
         Self: 'a,
         T: 'a;
 
-    type Rows<'a> = G::Rows<'a>
+    type Rows<'a>
+        = G::Rows<'a>
     where
         Self: 'a,
         T: 'a;
 
-    type Columns<'a> = G::Columns<'a>
+    type Columns<'a>
+        = G::Columns<'a>
     where
         Self: 'a,
         T: 'a;

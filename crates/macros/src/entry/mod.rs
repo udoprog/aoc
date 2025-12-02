@@ -4,7 +4,7 @@ use proc_macro::Span;
 mod parser;
 
 use crate::error::Error;
-use crate::into_tokens::{from_fn, IntoTokens};
+use crate::into_tokens::{IntoTokens, from_fn};
 use crate::parsing::Buf;
 use crate::token_stream::TokenStream;
 

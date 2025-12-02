@@ -10,7 +10,7 @@ use core::fmt;
 use core::ops::AddAssign;
 use core::time::Duration;
 
-use anyhow::{anyhow, bail, Context, Result};
+use anyhow::{Context, Result, anyhow, bail};
 use serde::{Deserialize, Serialize};
 
 pub use self::bencher::Bencher;
@@ -214,7 +214,7 @@ impl fmt::Display for Report {
 
                 let mut n = self.0;
 
-                while n % 10 == 0 {
+                while n.is_multiple_of(10) {
                     n /= 10;
                 }
 

@@ -3,9 +3,9 @@ use std::ffi::OsString;
 use std::path::PathBuf;
 use std::process::{Command, ExitCode, ExitStatus, Stdio};
 
-use anyhow::{bail, Context, Result};
+use anyhow::{Context, Result, bail};
 use lib::cli::Report;
-use serde::{de::IntoDeserializer, Deserialize};
+use serde::{Deserialize, de::IntoDeserializer};
 
 const LIB_NAME: &str = env!("CARGO_CRATE_NAME");
 

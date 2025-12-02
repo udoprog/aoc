@@ -1,6 +1,6 @@
 [package]
-name = "y2021"
-edition = "2021"
+name = "y2025"
+edition = "2024"
 publish = false
 
 [dependencies]

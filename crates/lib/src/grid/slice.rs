@@ -37,7 +37,11 @@ impl<'a, T> Column<'a, T> {
 }
 
 impl<'a, T> GridSliceRef<'a, T> for Column<'a, T> {
-    type Iter<'this> = ColumnIter<'this, T> where Self: 'this, T: 'this;
+    type Iter<'this>
+        = ColumnIter<'this, T>
+    where
+        Self: 'this,
+        T: 'this;
 
     #[inline]
     fn len(&self) -> usize {
@@ -119,7 +123,11 @@ where
 }
 
 impl<'a, T> GridSliceRef<'a, T> for Row<'a, T> {
-    type Iter<'this> = slice::Iter<'this, T> where Self: 'this, T: 'this;
+    type Iter<'this>
+        = slice::Iter<'this, T>
+    where
+        Self: 'this,
+        T: 'this;
 
     #[inline]
     fn len(&self) -> usize {
@@ -183,7 +191,11 @@ impl<'a, T> ColumnMut<'a, T> {
 }
 
 impl<'a, T> GridSliceMut<'a, T> for ColumnMut<'a, T> {
-    type IterMut<'this> = ColumnIterMut<'this, T> where Self: 'this, T: 'this;
+    type IterMut<'this>
+        = ColumnIterMut<'this, T>
+    where
+        Self: 'this,
+        T: 'this;
 
     #[inline]
     fn into_mut(self, index: usize) -> Option<&'a mut T> {
@@ -210,7 +222,11 @@ impl<'a, T> GridSliceMut<'a, T> for ColumnMut<'a, T> {
 }
 
 impl<'a, T> GridSliceRef<'a, T> for ColumnMut<'a, T> {
-    type Iter<'this> = ColumnIter<'this, T> where Self: 'this, T: 'this;
+    type Iter<'this>
+        = ColumnIter<'this, T>
+    where
+        Self: 'this,
+        T: 'this;
 
     #[inline]
     fn len(&self) -> usize {
@@ -279,7 +295,11 @@ impl<T> AsMut<[T]> for RowMut<'_, T> {
 }
 
 impl<'a, T> GridSliceMut<'a, T> for RowMut<'a, T> {
-    type IterMut<'this> = slice::IterMut<'this, T> where Self: 'this, T: 'this;
+    type IterMut<'this>
+        = slice::IterMut<'this, T>
+    where
+        Self: 'this,
+        T: 'this;
 
     #[inline]
     fn into_mut(self, index: usize) -> Option<&'a mut T> {
@@ -309,7 +329,11 @@ impl<'a, T> GridSliceMut<'a, T> for RowMut<'a, T> {
 }
 
 impl<'a, T> GridSliceRef<'a, T> for RowMut<'a, T> {
-    type Iter<'this> = slice::Iter<'this, T> where Self: 'this, T: 'this;
+    type Iter<'this>
+        = slice::Iter<'this, T>
+    where
+        Self: 'this,
+        T: 'this;
 
     #[inline]
     fn len(&self) -> usize {
@@ -365,10 +389,22 @@ unsafe impl<T> Send for SliceGridMut<'_, T> where T: Send {}
 unsafe impl<T> Sync for SliceGridMut<'_, T> where T: Sync {}
 
 impl<'a, T> Grid<T> for SliceGridMut<'a, T> {
-    type Row<'this> = Row<'this, T> where Self: 'this;
-    type Column<'this> = Column<'this, T> where Self: 'this;
-    type Rows<'this> = Rows<'this, T> where Self: 'this;
-    type Columns<'this> = Columns<'this, T> where Self: 'this;
+    type Row<'this>
+        = Row<'this, T>
+    where
+        Self: 'this;
+    type Column<'this>
+        = Column<'this, T>
+    where
+        Self: 'this;
+    type Rows<'this>
+        = Rows<'this, T>
+    where
+        Self: 'this;
+    type Columns<'this>
+        = Columns<'this, T>
+    where
+        Self: 'this;
 
     #[inline]
     fn row(&self, row: usize) -> Option<Self::Row<'_>> {
@@ -410,10 +446,22 @@ impl<'a, T> Grid<T> for SliceGridMut<'a, T> {
 }
 
 impl<'a, T> GridMut<T> for SliceGridMut<'a, T> {
-    type RowMut<'this> = RowMut<'this, T> where Self: 'this;
-    type ColumnMut<'this> = ColumnMut<'this, T> where Self: 'this;
-    type RowsMut<'this> = RowsMut<'this, T> where Self: 'this;
-    type ColumnsMut<'this> = ColumnsMut<'this, T> where Self: 'this;
+    type RowMut<'this>
+        = RowMut<'this, T>
+    where
+        Self: 'this;
+    type ColumnMut<'this>
+        = ColumnMut<'this, T>
+    where
+        Self: 'this;
+    type RowsMut<'this>
+        = RowsMut<'this, T>
+    where
+        Self: 'this;
+    type ColumnsMut<'this>
+        = ColumnsMut<'this, T>
+    where
+        Self: 'this;
 
     #[inline]
     fn rows_mut(&mut self) -> Self::RowsMut<'_> {
@@ -464,10 +512,22 @@ impl<'a, T> Clone for SliceGrid<'a, T> {
 impl<'a, T> Copy for SliceGrid<'a, T> {}
 
 impl<'a, T> Grid<T> for SliceGrid<'a, T> {
-    type Row<'this> = Row<'this, T> where Self: 'this;
-    type Column<'this> = Column<'this, T> where Self: 'this;
-    type Rows<'this> = Rows<'this, T> where Self: 'this;
-    type Columns<'this> = Columns<'this, T> where Self: 'this;
+    type Row<'this>
+        = Row<'this, T>
+    where
+        Self: 'this;
+    type Column<'this>
+        = Column<'this, T>
+    where
+        Self: 'this;
+    type Rows<'this>
+        = Rows<'this, T>
+    where
+        Self: 'this;
+    type Columns<'this>
+        = Columns<'this, T>
+    where
+        Self: 'this;
 
     #[inline]
     fn rows(&self) -> Self::Rows<'_> {
@@ -509,12 +569,18 @@ impl<'a, T> Grid<T> for SliceGrid<'a, T> {
 }
 
 impl<T> GridExt<T> for [T] {
-    type Grid<'this> = SliceGrid<'this, T> where Self: 'this;
-    type GridMut<'this> = SliceGridMut<'this, T> where Self: 'this;
+    type Grid<'this>
+        = SliceGrid<'this, T>
+    where
+        Self: 'this;
+    type GridMut<'this>
+        = SliceGridMut<'this, T>
+    where
+        Self: 'this;
 
     /// Treat the slice as a grid.
     #[inline]
-    fn as_grid_with_stride(&self, columns: usize, stride: usize) -> SliceGrid<T> {
+    fn as_grid_with_stride(&self, columns: usize, stride: usize) -> SliceGrid<'_, T> {
         let stride = columns.saturating_add(stride);
         assert!(columns != 0, "columns must be non-zero");
         assert!(
@@ -539,7 +605,7 @@ impl<T> GridExt<T> for [T] {
 
     /// Treat the slice as a grid.
     #[inline]
-    fn as_grid_mut_with_stride(&mut self, columns: usize, stride: usize) -> SliceGridMut<T> {
+    fn as_grid_mut_with_stride(&mut self, columns: usize, stride: usize) -> SliceGridMut<'_, T> {
         let stride = columns.saturating_add(stride);
         assert!(columns != 0, "stride must be non-zero");
         assert!(
@@ -593,10 +659,12 @@ unsafe fn row_index_ref<'a, T>(
     row: usize,
     index: usize,
 ) -> &'a T {
-    if mem::size_of::<T>() == 0 {
-        &*(data.as_ptr() as *const T)
-    } else {
-        &*(data.as_ptr() as *const T).add((row * dims.stride) + index)
+    unsafe {
+        if mem::size_of::<T>() == 0 {
+            &*(data.as_ptr() as *const T)
+        } else {
+            &*(data.as_ptr() as *const T).add((row * dims.stride) + index)
+        }
     }
 }
 
@@ -607,33 +675,39 @@ unsafe fn row_index_mut<'a, T>(
     row: usize,
     index: usize,
 ) -> &'a mut T {
-    if mem::size_of::<T>() == 0 {
-        &mut *(data.as_ptr() as *mut T)
-    } else {
-        &mut *(data.as_ptr() as *mut T).add((row * dims.stride) + index)
+    unsafe {
+        if mem::size_of::<T>() == 0 {
+            &mut *(data.as_ptr() as *mut T)
+        } else {
+            &mut *(data.as_ptr() as *mut T).add((row * dims.stride) + index)
+        }
     }
 }
 
 #[inline]
 unsafe fn row_slice_ref<'a, T>(data: ptr::NonNull<[T]>, dims: &Dims, row: usize) -> &'a [T] {
-    let ptr = if mem::size_of::<T>() == 0 {
-        data.as_ptr() as *const T
-    } else {
-        (data.as_ptr() as *const T).add(row * dims.stride)
-    };
+    unsafe {
+        let ptr = if mem::size_of::<T>() == 0 {
+            data.as_ptr() as *const T
+        } else {
+            (data.as_ptr() as *const T).add(row * dims.stride)
+        };
 
-    slice::from_raw_parts(ptr, dims.columns)
+        slice::from_raw_parts(ptr, dims.columns)
+    }
 }
 
 #[inline]
 unsafe fn row_slice_mut<'a, T>(data: ptr::NonNull<[T]>, dims: &Dims, row: usize) -> &'a mut [T] {
-    let ptr = if mem::size_of::<T>() == 0 {
-        data.as_ptr() as *mut T
-    } else {
-        (data.as_ptr() as *mut T).add(row * dims.stride)
-    };
+    unsafe {
+        let ptr = if mem::size_of::<T>() == 0 {
+            data.as_ptr() as *mut T
+        } else {
+            (data.as_ptr() as *mut T).add(row * dims.stride)
+        };
 
-    slice::from_raw_parts_mut(ptr, dims.columns)
+        slice::from_raw_parts_mut(ptr, dims.columns)
+    }
 }
 
 #[inline]
@@ -643,10 +717,12 @@ unsafe fn column_index_ref<'a, T>(
     column: usize,
     index: usize,
 ) -> &'a T {
-    if mem::size_of::<T>() == 0 {
-        &*(data.as_ptr() as *const T)
-    } else {
-        &*(data.as_ptr() as *const T).add((index * dims.stride) + column)
+    unsafe {
+        if mem::size_of::<T>() == 0 {
+            &*(data.as_ptr() as *const T)
+        } else {
+            &*(data.as_ptr() as *const T).add((index * dims.stride) + column)
+        }
     }
 }
 
@@ -657,9 +733,11 @@ unsafe fn column_index_mut<'a, T>(
     column: usize,
     index: usize,
 ) -> &'a mut T {
-    if mem::size_of::<T>() == 0 {
-        &mut *(data.as_ptr() as *mut T)
-    } else {
-        &mut *(data.as_ptr() as *mut T).add((index * dims.stride) + column)
+    unsafe {
+        if mem::size_of::<T>() == 0 {
+            &mut *(data.as_ptr() as *mut T)
+        } else {
+            &mut *(data.as_ptr() as *mut T).add((index * dims.stride) + column)
+        }
     }
 }

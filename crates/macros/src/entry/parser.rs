@@ -3,7 +3,7 @@ use proc_macro::{Delimiter, Literal, Spacing, Span, TokenTree};
 use crate::entry::output::{Config, ItemOutput};
 use crate::error::Error;
 use crate::parsing::{BaseParser, Buf};
-use crate::parsing::{Punct, COMMA, EQ};
+use crate::parsing::{COMMA, EQ, Punct};
 
 /// A parser for the arguments provided to an entry macro.
 pub(crate) struct ConfigParser<'a> {

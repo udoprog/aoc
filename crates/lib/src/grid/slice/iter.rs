@@ -2,8 +2,8 @@ use core::marker::PhantomData;
 use core::ops::Range;
 use core::ptr;
 
-use crate::grid::slice::{column_index_mut, column_index_ref};
 use crate::grid::slice::{Column, ColumnMut, Dims, Row, RowMut};
+use crate::grid::slice::{column_index_mut, column_index_ref};
 
 macro_rules! single {
     ($name:ident $item:ident $dim:ident [$($m:tt)*] $(#[$($meta:meta)*])?) => {

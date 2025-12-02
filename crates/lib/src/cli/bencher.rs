@@ -4,7 +4,7 @@ use std::{
     time::{Duration, Instant},
 };
 
-use anyhow::{bail, Context, Error, Result};
+use anyhow::{Context, Error, Result, bail};
 
 use crate::cli::{Opts, Output, OutputEq, OutputKind, Report};
 
@@ -79,10 +79,10 @@ impl Bencher {
         let value = f()?;
 
         // run once to check against expected.
-        if let Some(expect) = &expected {
-            if !value.output_eq(expect) {
-                bail!("{value:?} (value) != {expect:?} (expected)");
-            }
+        if let Some(expect) = &expected
+            && !value.output_eq(expect)
+        {
+            bail!("{value:?} (value) != {expect:?} (expected)");
         }
 
         let _ = black_box(value);

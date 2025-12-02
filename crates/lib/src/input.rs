@@ -179,7 +179,7 @@ impl IStr {
         line.next::<T>()
     }
 
-    /// Shorthand for using [Ws] to scan newlines.
+    /// Shorthand for using [`Ws`] to scan newlines.
     #[inline]
     pub fn ws(&mut self) -> Result<usize> {
         let Ws(n) = self.next::<Ws>()?;
@@ -733,7 +733,7 @@ where
     }
 }
 
-impl<const N: usize, T> FromInputIter for ConstGenericRingBuffer<T, N>
+impl<T, const N: usize> FromInputIter for ConstGenericRingBuffer<T, N>
 where
     T: FromInput,
 {
@@ -742,7 +742,7 @@ where
     where
         I: InputIterator,
     {
-        use ringbuffer::{RingBuffer, RingBufferWrite};
+        use ringbuffer::RingBuffer;
 
         let index = it.index();
         let mut array = ConstGenericRingBuffer::new();
@@ -755,7 +755,7 @@ where
                 ));
             }
 
-            array.push(value);
+            array.enqueue(value);
         }
 
         Ok(Some(array))

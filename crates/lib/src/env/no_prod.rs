@@ -3,7 +3,7 @@ use core::ops::Range;
 use std::fs::File;
 use std::io::Read;
 
-use anyhow::{anyhow, Context};
+use anyhow::{Context, anyhow};
 
 use crate::cli::error::LineCol;
 use crate::input::IStr;
